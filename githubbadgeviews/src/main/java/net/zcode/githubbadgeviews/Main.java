@@ -1,4 +1,4 @@
-package net.zcode.net.zcode.githubbadgeviews;
+package net.zcode.githubbadgeviews;
 
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -23,8 +23,6 @@ public class Main {
     private static void getViews(int number, String url) {
         while(number > added){
             try{
-                added++;
-
                 URLConnection openConnection = new URL(url).openConnection();
                 openConnection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
                 openConnection.connect();
@@ -34,11 +32,11 @@ public class Main {
                 @SuppressWarnings("resource")
                 Scanner scan = new Scanner((new InputStreamReader(openConnection.getInputStream())));
                 scan.nextLine();
+
+                added++;
             }
             catch (Exception ex){
                 ex.printStackTrace();
-
-                added--;
             }
         }
     }
